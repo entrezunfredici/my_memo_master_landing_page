@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MyMemoMaster : une plateforme éducative en bêta pour réviser activement, s'organiser et suivre sa progression." />
+  <title>MyMemoMaster — Réviser, s'organiser, progresser</title>
+  <style>
+    :root {
+      --color-primary: #2f49b6;
+      --color-primary-dark: #21378e;
+      --color-primary-soft: #e8edff;
+      --color-accent: #6d83e6;
+      --color-bg: #f7f8fc;
+      --color-surface: #ffffff;
+      --color-surface-alt: #f1f4fb;
+      --color-text: #182033;
+      --color-muted: #58627a;
+      --color-border: #dbe2f1;
+      --color-success: #dff4e8;
+      --color-warning: #fff2d9;
+      --shadow-sm: 0 8px 24px rgba(18, 34, 84, 0.08);
+      --shadow-lg: 0 20px 60px rgba(25, 42, 94, 0.16);
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --container: 1180px;
+      --header-height: 78px;
+      --contact-email: "contact@mymemomaster.beta";
+      --project-name: "MyMemoMaster";
+      --newsletter-frequency: "rapport trimestriel";
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(109, 131, 230, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbfcff 0%, var(--color-bg) 100%);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section-alt {
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading h2 {
+      margin: 0.8rem 0 0.9rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(248, 249, 253, 0.85);
+      border-bottom: 1px solid rgba(219, 226, 241, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-wrap {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 800;
+      font-size: 1.08rem;
+    }
+
+    .brand-mark {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--color-primary), #5e77de);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      border-radius: 12px;
+      width: 2.9rem;
+      height: 2.9rem;
+      padding: 0;
+    }
+
+    .nav-toggle span,
+    .nav-toggle::before,
+    .nav-toggle::after {
+      content: "";
+      display: block;
+      width: 1.2rem;
+      height: 2px;
+      margin: 0.23rem auto;
+      background: var(--color-text);
+      border-radius: 999px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), #5570d9);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(47, 73, 182, 0.24);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 18px 36px rgba(47, 73, 182, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--color-primary-dark);
+      border-color: var(--color-border);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin: 1rem 0 1rem;
+      font-size: clamp(2.6rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 640px;
+      color: var(--color-muted);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.95rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .hero-note {
+      color: var(--color-muted);
+      font-size: 0.98rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1rem;
+    }
+
+    .dashboard-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.4rem;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #1e2f77 0%, #2f49b6 48%, #5d78e0 100%);
+      color: #fff;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dashboard-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -15% -20% auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.26), transparent 70%);
+    }
+
+    .mockup-panel {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+      padding: 1rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .mockup-top,
+    .mockup-stats,
+    .mockup-bottom {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mockup-top {
+      grid-template-columns: 1.1fr 0.9fr;
+      margin-bottom: 1rem;
+    }
+
+    .mockup-stats {
+      grid-template-columns: repeat(3, 1fr);
+      margin: 1rem 0;
+    }
+
+    .mockup-bottom {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .glass-box,
+    .mini-card,
+    .line-card {
+      border-radius: 18px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 1rem;
+    }
+
+    .glass-box h3,
+    .mini-card h4 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .subtle {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.92rem;
+    }
+
+    .mind-map {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .mind-node {
+      padding: 0.8rem 0.9rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .progress-ring {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      margin-bottom: 0.8rem;
+      background: conic-gradient(#ffffff 0 72%, rgba(255,255,255,0.18) 72% 100%);
+      display: grid;
+      place-items: center;
+    }
+
+    .progress-ring span {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(28, 44, 108, 0.95);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .kpi-list,
+    .planner-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.85rem 0 0;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .kpi-list li,
+    .planner-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+
+    /* Problem / value */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      padding: 1.7rem;
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      border: 1px solid rgba(219, 226, 241, 0.9);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 1.1rem 0 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .list li {
+      display: flex;
+      align-items: start;
+      gap: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .list strong { color: var(--color-text); }
+
+    .bullet {
+      flex-shrink: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-top: 0.15rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--color-primary-soft);
+      color: var(--color-primary-dark);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    /* Features */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .feature-card {
+      padding: 1.6rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,248,255,0.98));
+      border: 1px solid rgba(219, 226, 241, 0.95);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .feature-card:hover,
+    .feature-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 38px rgba(31, 49, 113, 0.11);
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary-dark);
+      font-size: 1.3rem;
+    }
+
+    .feature-card h3 { margin: 0 0 0.65rem; }
+    .feature-card p { margin: 0; color: var(--color-muted); }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .step-card {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: white;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    /* Audience */
+    .audience-grid,
+    .beta-grid,
+    .engage-grid,
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.7rem;
+      background: var(--color-warning);
+      border-radius: 999px;
+      color: #7b5a19;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .beta-panel {
+      background: linear-gradient(180deg, #fff, #f8faff);
+    }
+
+    .beta-note {
+      padding: 1rem 1.1rem;
+      background: var(--color-surface-alt);
+      border-radius: 16px;
+      color: var(--color-muted);
+      margin-top: 1rem;
+    }
+
+    /* Forms */
+    .engage-card {
+      padding: 2rem;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,248,255,0.96));
+      border: 1px solid rgba(219, 226, 241, 0.95);
+      box-shadow: var(--shadow-sm);
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.45rem;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(47, 73, 182, 0.12);
+    }
+
+    textarea {
+      min-height: 154px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
+
+    .checkbox-row input {
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.25rem;
+    }
+
+    .fine-print {
+      color: var(--color-muted);
+      font-size: 0.95rem;
+      margin-top: 0.9rem;
+    }
+
+    .status-message {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      background: var(--color-success);
+      color: #175c36;
+      font-weight: 600;
+    }
+
+    .status-message.is-visible {
+      display: block;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    details {
+      padding: 1.2rem 1.35rem;
+      border-radius: 18px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details p {
+      margin: 0.9rem 0 0;
+      color: var(--color-muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(219, 226, 241, 0.9);
+      background: rgba(255,255,255,0.82);
+    }
+
+    .footer-brand p,
+    .footer-links a,
+    .footer-meta {
+      color: var(--color-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .footer-tag {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-surface-alt);
+      color: var(--color-primary-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .grid-2,
+      .feature-grid,
+      .steps,
+      .audience-grid,
+      .beta-grid,
+      .engage-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { padding-top: 3.4rem; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-toggle { display: inline-block; }
+
+      .nav-menu {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: calc(100% + 0.5rem);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.97);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-menu.is-open { display: flex; }
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-actions .btn,
+      .nav-menu .btn { width: 100%; }
+
+      .feature-grid,
+      .steps { grid-template-columns: 1fr; }
+
+      .mockup-top,
+      .mockup-stats,
+      .mockup-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .section { padding: 4.3rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / navigation -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Retour en haut de page">
+        <span class="brand-mark">M</span>
+        <span id="brandName">MyMemoMaster</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+        <span></span>
+      </button>
+
+      <nav id="navMenu" class="nav-menu" aria-label="Navigation principale">
+        <div class="nav-links">
+          <a href="#pourquoi">Pourquoi</a>
+          <a href="#fonctionnalites">Fonctionnalités</a>
+          <a href="#publics">Pour qui</a>
+          <a href="#beta">Bêta</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <a class="btn btn-primary" href="#newsletter">Rejoindre la bêta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">● Bêta test en cours</span>
+          <h1>Une plateforme pour mieux réviser, mieux s’organiser et progresser avec méthode.</h1>
+          <p>
+            <strong>MyMemoMaster</strong> réunit dans un même espace les cartes mentales, les flashcards,
+            les exercices, le planning et le suivi de progression pour aider les étudiants et les enseignants à construire une révision plus active et plus lisible.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#newsletter">S’abonner à la newsletter</a>
+            <a class="btn btn-secondary" href="#fonctionnalites">Découvrir les fonctionnalités</a>
+          </div>
+          <p class="hero-note">Projet en évolution — vos retours nous aident à construire la meilleure version de MyMemoMaster.</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="dashboard-card">
+            <div class="mockup-panel">
+              <div class="mockup-top">
+                <div class="glass-box">
+                  <h3>Révision structurée</h3>
+                  <p class="subtle">Centralise cours, synthèses, cartes mentales et rappels dans un seul tableau de bord.</p>
+                  <div class="mind-map">
+                    <div class="mind-node">Cours → idées clés</div>
+                    <div class="mind-node">Flashcards → répétition espacée</div>
+                    <div class="mind-node">Exercices → application active</div>
+                  </div>
+                </div>
+                <div class="glass-box">
+                  <div class="progress-ring"><span>72%</span></div>
+                  <h3>Progression visible</h3>
+                  <p class="subtle">Des repères simples pour suivre l’avancement, la régularité et les priorités.</p>
+                </div>
+              </div>
+
+              <div class="mockup-stats">
+                <div class="mini-card">
+                  <h4>Flashcards</h4>
+                  <p class="subtle">Système Leitner pour réviser au bon rythme.</p>
+                </div>
+                <div class="mini-card">
+                  <h4>Planning</h4>
+                  <p class="subtle">Vue claire des sessions et des échéances.</p>
+                </div>
+                <div class="mini-card">
+                  <h4>Aide IA</h4>
+                  <p class="subtle">Appui pédagogique sur certaines fonctionnalités.</p>
+                </div>
+              </div>
+
+              <div class="mockup-bottom">
+                <div class="line-card">
+                  <h4>Indicateurs de progression</h4>
+                  <ul class="kpi-list">
+                    <li><span>Sessions planifiées</span><strong>Cette semaine</strong></li>
+                    <li><span>Révisions actives</span><strong>À consolider</strong></li>
+                    <li><span>Axes prioritaires</span><strong>2 chapitres</strong></li>
+                  </ul>
+                </div>
+                <div class="line-card">
+                  <h4>Organisation</h4>
+                  <ul class="planner-list">
+                    <li><span>Lundi</span><strong>Cartes mentales</strong></li>
+                    <li><span>Mercredi</span><strong>Exercices ciblés</strong></li>
+                    <li><span>Vendredi</span><strong>Flashcards + bilan</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why MyMemoMaster -->
+    <section id="pourquoi" class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Pourquoi MyMemoMaster ?</span>
+          <h2>Quand les outils sont dispersés, les révisions deviennent plus lourdes qu’elles ne devraient l’être.</h2>
+          <p>Le projet part d’un constat simple : beaucoup d’étudiants alternent entre notes, applis, tableaux et rappels sans réelle continuité. MyMemoMaster propose une approche plus cohérente, centrée sur l’apprentissage actif.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Les freins les plus fréquents</h3>
+            <ul class="list">
+              <li><span class="bullet">–</span><span><strong>Révisions passives :</strong> relire plusieurs fois ne suffit pas toujours pour mémoriser durablement.</span></li>
+              <li><span class="bullet">–</span><span><strong>Outils dispersés :</strong> cartes, exercices, planning et suivi vivent souvent dans des espaces séparés.</span></li>
+              <li><span class="bullet">–</span><span><strong>Organisation fragile :</strong> il est difficile de garder une méthode stable dans le temps.</span></li>
+              <li><span class="bullet">–</span><span><strong>Manque de visibilité :</strong> sans indicateurs clairs, il est compliqué de savoir où concentrer ses efforts.</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>La réponse proposée par la plateforme</h3>
+            <ul class="list">
+              <li><span class="bullet">+</span><span><strong>Une plateforme unifiée :</strong> toutes les briques de révision au même endroit.</span></li>
+              <li><span class="bullet">+</span><span><strong>Une révision active :</strong> cartes, Leitner, exercices et rappels réguliers pour mieux mobiliser la mémoire.</span></li>
+              <li><span class="bullet">+</span><span><strong>Une progression visible :</strong> des repères simples pour suivre l’avancement et ajuster les priorités.</span></li>
+              <li><span class="bullet">+</span><span><strong>Une organisation simplifiée :</strong> planifier, répartir et revoir sans multiplier les outils.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="fonctionnalites" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Fonctionnalités principales</span>
+          <h2>Des outils complémentaires pour apprendre de manière plus claire et plus régulière.</h2>
+          <p>Chaque fonctionnalité répond à un besoin concret : structurer l’information, réviser activement, s’organiser et mesurer ses progrès sans complexifier la méthode.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon">🧠</div><h3>Cartes mentales</h3><p>Organise visuellement les notions importantes pour mieux relier les idées et construire des synthèses compréhensibles.</p></article>
+          <article class="feature-card"><div class="feature-icon">🗂️</div><h3>Leitner / flashcards</h3><p>Révise selon un rythme plus pertinent grâce à la répétition espacée et à une logique de mémorisation active.</p></article>
+          <article class="feature-card"><div class="feature-icon">✍️</div><h3>Exercices</h3><p>Passe de la compréhension théorique à la mise en pratique avec des entraînements ciblés et réguliers.</p></article>
+          <article class="feature-card"><div class="feature-icon">📅</div><h3>Planning / organisation</h3><p>Visualise tes sessions de travail, priorise les chapitres à revoir et garde une routine de révision plus stable.</p></article>
+          <article class="feature-card"><div class="feature-icon">📈</div><h3>Suivi de progression</h3><p>Repère ce qui avance, ce qui stagne et ce qui demande plus d’attention grâce à des indicateurs simples.</p></article>
+          <article class="feature-card"><div class="feature-icon">✨</div><h3>Aide intelligente / IA</h3><p>Profite d’aides pédagogiques sur certaines fonctionnalités pour clarifier, reformuler ou mieux orienter ton travail.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-alt" id="fonctionnement">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Comment ça fonctionne</span>
+          <h2>Une méthode simple en quatre étapes pour réviser avec plus de continuité.</h2>
+          <p>Le but n’est pas d’ajouter une couche d’outils, mais de rendre le travail plus lisible du début à la fin.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step-card"><div class="step-number">1</div><h3>Crée tes ressources</h3><p>Prépare tes cartes mentales, tes flashcards et tes contenus de révision à partir de tes cours.</p></article>
+          <article class="step-card"><div class="step-number">2</div><h3>Révise activement</h3><p>Alterne rappel, répétition espacée et exercices pour rendre l’apprentissage plus engageant.</p></article>
+          <article class="step-card"><div class="step-number">3</div><h3>Suis ta progression</h3><p>Observe tes repères, repère les points à renforcer et évite de travailler à l’aveugle.</p></article>
+          <article class="step-card"><div class="step-number">4</div><h3>Améliore ta méthode</h3><p>Ajuste ton organisation dans la durée grâce aux retours d’usage et à une meilleure visibilité sur tes habitudes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section id="publics" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Pour qui ?</span>
+          <h2>Une plateforme pensée pour plusieurs usages pédagogiques.</h2>
+          <p>MyMemoMaster s’adresse d’abord aux étudiants post-bac, avec une logique également utile pour les enseignants et, à terme, pour des structures éducatives.</p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card">
+            <h3>Étudiants</h3>
+            <ul class="list">
+              <li><span class="bullet">✓</span><span>Centraliser ses outils de révision pour limiter la dispersion.</span></li>
+              <li><span class="bullet">✓</span><span>Mettre en place une méthode plus régulière avant les examens ou les partiels.</span></li>
+              <li><span class="bullet">✓</span><span>Visualiser plus clairement ses priorités et sa progression.</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Enseignants</h3>
+            <ul class="list">
+              <li><span class="bullet">✓</span><span>Encourager des pratiques de révision plus actives et plus structurées.</span></li>
+              <li><span class="bullet">✓</span><span>Orienter les apprenants vers des routines de travail plus explicites.</span></li>
+              <li><span class="bullet">✓</span><span>Suivre l’évolution du projet en vue d’usages pédagogiques futurs.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beta section -->
+    <section id="beta" class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Statut du projet</span>
+          <h2>MyMemoMaster est en bêta test : le produit avance, et vos retours comptent vraiment.</h2>
+          <p>Cette phase permet d’améliorer l’expérience, de clarifier les usages et de faire évoluer les fonctionnalités au contact des premiers utilisateurs intéressés.</p>
+        </div>
+
+        <div class="beta-grid">
+          <article class="card beta-panel">
+            <span class="badge-soft">Bêta test transparent</span>
+            <h3>Ce que cela signifie concrètement</h3>
+            <ul class="list">
+              <li><span class="bullet">i</span><span>Certaines fonctionnalités continuent d’évoluer et peuvent encore être ajustées.</span></li>
+              <li><span class="bullet">i</span><span>L’interface et les parcours sont améliorés progressivement selon les retours recueillis.</span></li>
+              <li><span class="bullet">i</span><span>La roadmap avance par étapes, avec une attention particulière portée à l’utilité réelle des outils.</span></li>
+            </ul>
+          </article>
+          <article class="card beta-panel">
+            <span class="badge-soft">Une bêta utile, pas improvisée</span>
+            <h3>Pourquoi cela peut inspirer confiance</h3>
+            <p>Le projet n’essaie pas de se présenter comme totalement finalisé. Au contraire, l’objectif est d’être clair sur son niveau de maturité, de documenter les avancées et de construire une solution plus solide à partir des besoins remontés.</p>
+            <div class="beta-note">Suivre la bêta, c’est recevoir des nouvelles du projet, voir les évolutions trimestre après trimestre et contribuer à une plateforme mieux adaptée aux réalités du terrain.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter + feedback -->
+    <section id="newsletter" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Retours & newsletter</span>
+          <h2>Suivez l’évolution du projet et partagez ce qui vous semble utile à améliorer.</h2>
+          <p>Nous cherchons des retours de bêta testeurs, d’étudiants, d’enseignants et de personnes intéressées par la pédagogie numérique. La newsletter permet de recevoir les avancées du projet sous forme de rapport trimestriel.</p>
+        </div>
+
+        <div class="engage-grid">
+          <article class="engage-card">
+            <h3>Recevoir la newsletter</h3>
+            <p>Inscrivez-vous pour recevoir un <strong>rapport trimestriel</strong> sur la progression du projet, les nouveautés testées, les priorités à venir et l’ouverture de prochaines phases de bêta.</p>
+
+            <form id="newsletterForm">
+              <label for="firstName">Prénom
+                <input id="firstName" name="firstName" type="text" placeholder="Votre prénom" required />
+              </label>
+              <label for="email">Email
+                <input id="email" name="email" type="email" placeholder="vous@exemple.com" required />
+              </label>
+              <label class="checkbox-row" for="consent">
+                <input id="consent" name="consent" type="checkbox" required />
+                <span>J’accepte d’être contacté(e) par email pour recevoir le rapport trimestriel du projet et les informations liées à la bêta.</span>
+              </label>
+              <button class="btn btn-primary" type="submit">S’abonner</button>
+            </form>
+            <p class="fine-print">Fréquence prévue : un envoi par trimestre, avec une communication simple, utile et sans promesse excessive.</p>
+            <div class="status-message" id="newsletterMessage" role="status" aria-live="polite">Merci, votre demande d’abonnement a bien été prise en compte.</div>
+          </article>
+
+          <article class="engage-card">
+            <h3>Nous faire un retour</h3>
+            <p>Vous avez une remarque, un besoin métier, une suggestion d’amélioration ou simplement envie de suivre le projet de près ? Votre retour peut aider à prioriser les prochaines évolutions.</p>
+
+            <form id="feedbackForm">
+              <label for="feedbackMessage">Votre message
+                <textarea id="feedbackMessage" name="feedbackMessage" placeholder="Décrivez votre besoin, votre contexte ou votre retour d’expérience..." required></textarea>
+              </label>
+              <button class="btn btn-secondary" type="submit">Envoyer un retour</button>
+            </form>
+            <p class="fine-print">Vous pouvez aussi écrire directement à <a id="contactEmailLink" href="mailto:contact@mymemomaster.beta">contact@mymemomaster.beta</a>.</p>
+            <div class="status-message" id="feedbackMessageStatus" role="status" aria-live="polite">Merci pour votre retour. Il a bien été enregistré côté interface.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions fréquentes</h2>
+          <p>Quelques réponses pour clarifier le périmètre du projet, son statut actuel et l’intérêt de la newsletter.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>MyMemoMaster est-il déjà disponible ? <span>+</span></summary>
+            <p>Le projet est actuellement en phase de bêta test. Cela signifie que la plateforme est en cours d’évolution et qu’elle n’est pas encore présentée comme une version finalisée.</p>
+          </details>
+          <details>
+            <summary>Que veut dire bêta test ? <span>+</span></summary>
+            <p>La bêta permet de tester, d’ajuster et d’améliorer le produit à partir d’usages concrets. Certaines fonctionnalités peuvent encore évoluer, être affinées ou être réorganisées.</p>
+          </details>
+          <details>
+            <summary>À quoi sert la newsletter ? <span>+</span></summary>
+            <p>La newsletter sert à recevoir un rapport trimestriel sur l’évolution du projet : avancées, axes de travail, nouveautés en test et prochaines étapes.</p>
+          </details>
+          <details>
+            <summary>Qui peut utiliser MyMemoMaster ? <span>+</span></summary>
+            <p>Le projet vise principalement les étudiants post-bac, mais il peut aussi intéresser des enseignants et, à terme, des établissements qui cherchent des outils pédagogiques mieux structurés.</p>
+          </details>
+          <details>
+            <summary>Les retours utilisateurs sont-ils lus ? <span>+</span></summary>
+            <p>Oui, l’objectif de cette phase est justement de recueillir des retours utiles pour améliorer le produit et mieux prioriser la roadmap.</p>
+          </details>
+          <details>
+            <summary>Est-ce gratuit pendant la bêta ? <span>+</span></summary>
+            <p>La page présente avant tout un projet en cours de construction. Les modalités exactes d’accès et d’ouverture sont amenées à être précisées au fil de la progression de la bêta.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">M</span>
+          <span id="footerBrandName">MyMemoMaster</span>
+        </div>
+        <p>Une landing page claire pour présenter un projet éducatif en construction, inviter aux retours et informer via une newsletter trimestrielle.</p>
+        <div class="footer-tags">
+          <span class="footer-tag">Projet en bêta</span>
+          <span class="footer-tag">Newsletter trimestrielle</span>
+          <span class="footer-tag">Vos retours comptent</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-links">
+          <a href="#pourquoi">Pourquoi</a>
+          <a href="#fonctionnalites">Fonctionnalités</a>
+          <a href="#beta">Bêta</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#faq">FAQ</a>
+          <a id="footerContactLink" href="mailto:contact@mymemomaster.beta">Contact</a>
+        </div>
+        <p class="footer-meta">© <span id="currentYear"></span> <span id="footerProjectName">MyMemoMaster</span> — Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Configuration légère : ces valeurs peuvent être remplacées par des variables d'environnement côté hébergement.
+    window.MMM_ENV = {
+      projectName: '__MMM_PROJECT_NAME__',
+      contactEmail: '__MMM_CONTACT_EMAIL__',
+      newsletterFrequency: '__MMM_NEWSLETTER_FREQUENCY__'
+    };
+
+    const defaults = {
+      projectName: 'MyMemoMaster',
+      contactEmail: 'contact@mymemomaster.beta',
+      newsletterFrequency: 'rapport trimestriel'
+    };
+
+    const config = {
+      projectName: window.MMM_ENV.projectName.startsWith('__') ? defaults.projectName : window.MMM_ENV.projectName,
+      contactEmail: window.MMM_ENV.contactEmail.startsWith('__') ? defaults.contactEmail : window.MMM_ENV.contactEmail,
+      newsletterFrequency: window.MMM_ENV.newsletterFrequency.startsWith('__') ? defaults.newsletterFrequency : window.MMM_ENV.newsletterFrequency
+    };
+
+    document.documentElement.style.setProperty('--project-name', `"${config.projectName}"`);
+    document.documentElement.style.setProperty('--contact-email', `"${config.contactEmail}"`);
+    document.documentElement.style.setProperty('--newsletter-frequency', `"${config.newsletterFrequency}"`);
+
+    document.getElementById('brandName').textContent = config.projectName;
+    document.getElementById('footerBrandName').textContent = config.projectName;
+    document.getElementById('footerProjectName').textContent = config.projectName;
+
+    const contactHref = `mailto:${config.contactEmail}`;
+    const contactNodes = [document.getElementById('contactEmailLink'), document.getElementById('footerContactLink')];
+    contactNodes.forEach((node) => {
+      node.textContent = config.contactEmail;
+      node.href = contactHref;
+    });
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navMenu.classList.toggle('is-open');
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMessage = document.getElementById('newsletterMessage');
+    newsletterForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!newsletterForm.reportValidity()) return;
+      newsletterMessage.textContent = `Merci, votre inscription à la newsletter (${config.newsletterFrequency}) a bien été prise en compte côté interface.`;
+      newsletterMessage.classList.add('is-visible');
+      newsletterForm.reset();
+    });
+
+    const feedbackForm = document.getElementById('feedbackForm');
+    const feedbackMessageStatus = document.getElementById('feedbackMessageStatus');
+    feedbackForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!feedbackForm.reportValidity()) return;
+      feedbackMessageStatus.classList.add('is-visible');
+      feedbackForm.reset();
+    });
+  </script>
+</body>
+</html>
