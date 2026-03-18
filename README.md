@@ -3,8 +3,8 @@
 
 ```sh
 mkdir my_memo_master_landing_page_prod
-chmod -R 700 my_memo_master_landing_page_prod
-chown -R $SERVER_USER:www-data my_memo_master_landing_page_prod
+chmod -R 775 my_memo_master_landing_page_prod
+chown -R mymemomaster_prod:www-data my_memo_master_landing_page_prod
 ```
 
 - `SERVER_IP`
