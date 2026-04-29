@@ -1,5 +1,14 @@
 import { config } from './config.js';
 
+const getTurnstileToken = (form) =>
+  form.querySelector('[name="cf-turnstile-response"]')?.value || '';
+
+const resetTurnstile = (form) => {
+  if (typeof window.turnstile === 'undefined') return;
+  const widget = form.querySelector('.cf-turnstile');
+  if (widget) window.turnstile.reset(widget);
+};
+
 const setStatusMessage = (node, message, tone = 'success') => {
   node.textContent = message;
   node.classList.add('is-visible');
@@ -31,6 +40,11 @@ export function initForms(emailjsReady) {
       return;
     }
 
+    if (config.turnstileSiteKey && !getTurnstileToken(newsletterForm)) {
+      setStatusMessage(newsletterMessage, 'Veuillez compléter le CAPTCHA avant de continuer.', 'error');
+      return;
+    }
+
     const formData = new FormData(newsletterForm);
     const firstName = String(formData.get('firstName') || '').trim();
     const email = String(formData.get('email') || '').trim();
@@ -57,12 +71,14 @@ export function initForms(emailjsReady) {
         `Merci${firstName ? ` ${firstName},` : ''} votre email de bienvenue vient d'être envoyé.`
       );
       newsletterForm.reset();
+      resetTurnstile(newsletterForm);
     } catch {
       setStatusMessage(
         newsletterMessage,
         `L'inscription a échoué pour le moment. Réessayez dans un instant ou contactez ${config.contactEmail}.`,
         'error'
       );
+      resetTurnstile(newsletterForm);
     } finally {
       setSubmitButtonState(newsletterForm, false, 'Envoi en cours...');
     }
@@ -74,7 +90,12 @@ export function initForms(emailjsReady) {
   feedbackForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!feedbackForm.reportValidity()) return;
+    if (config.turnstileSiteKey && !getTurnstileToken(feedbackForm)) {
+      setStatusMessage(feedbackMessageStatus, 'Veuillez compléter le CAPTCHA avant de continuer.', 'error');
+      return;
+    }
     feedbackMessageStatus.classList.add('is-visible');
     feedbackForm.reset();
+    resetTurnstile(feedbackForm);
   });
 }

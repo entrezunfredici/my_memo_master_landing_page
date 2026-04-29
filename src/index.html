@@ -103,6 +103,7 @@
                 <input id="consent" name="consent" type="checkbox" required />
                 <span>J’accepte d’être contacté(e) par email pour recevoir le rapport trimestriel du projet et les informations liées à la bêta.</span>
               </label>
+              <div class="cf-turnstile" id="newsletterTurnstile" data-sitekey="0x4AAAAAAC2JVuF9MNWoCGha"></div>
               <button class="btn btn-primary" type="submit">S’inscrire</button>
             </form>
             <p class="fine-print">Fréquence prévue : un envoi par trimestre, avec une communication simple, utile et sans promesse excessive.</p>
@@ -117,6 +118,7 @@
               <label for="feedbackMessage">Votre message
                 <textarea id="feedbackMessage" name="feedbackMessage" placeholder="Décrivez votre besoin, votre contexte ou votre retour d’expérience..." required></textarea>
               </label>
+              <div class="cf-turnstile" id="feedbackTurnstile" data-sitekey="0x4AAAAAAC2JVuF9MNWoCGha"></div>
               <button class="btn btn-secondary" type="submit">Envoyer un retour</button>
             </form>
             <p class="fine-print">Vous pouvez aussi écrire directement à <a id="contactEmailLink" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>.</p>
@@ -232,10 +234,12 @@
       websiteUrl: '__WEBSITE__',
       emailjsServiceId: '__SERVICE_ID__',
       emailjsTemplateId: '__TEMPLATE_ID__',
-      emailjsPublicKey: '__PUBLIC_KEY__'
+      emailjsPublicKey: '__PUBLIC_KEY__',
+      turnstileSiteKey: '__TURNSTILE_SITE_KEY__'
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -5,7 +5,8 @@ const defaults = {
   websiteUrl: 'my-memo-master.com',
   emailjsServiceId: 'service_wfecz27',
   emailjsTemplateId: 'template_9if0w4d',
-  emailjsPublicKey: 'BGhxxqDqYr7jkpsRB'
+  emailjsPublicKey: 'BGhxxqDqYr7jkpsRB',
+  turnstileSiteKey: ''
 };
 
 const resolveEnvValue = (value, fallback = '') => {
@@ -31,5 +32,6 @@ export const config = {
     serviceId: resolveEnvValue(env.emailjsServiceId, defaults.emailjsServiceId),
     templateId: resolveEnvValue(env.emailjsTemplateId, defaults.emailjsTemplateId),
     publicKey: resolveEnvValue(env.emailjsPublicKey, defaults.emailjsPublicKey)
-  }
+  },
+  turnstileSiteKey: resolveEnvValue(env.turnstileSiteKey, defaults.turnstileSiteKey)
 };

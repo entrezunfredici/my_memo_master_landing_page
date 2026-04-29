@@ -35,4 +35,5 @@ if (emailjsReady) {
 }
 
 initNav();
+
 initForms(emailjsReady);
