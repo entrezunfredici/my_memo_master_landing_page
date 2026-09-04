@@ -1,37 +1,24 @@
-const defaults = {
-  projectName: 'MyMemoMaster',
-  contactEmail: 'support@my-memo-master.com',
-  newsletterFrequency: 'rapport trimestriel',
-  websiteUrl: 'my-memo-master.com',
-  emailjsServiceId: 'service_wfecz27',
-  emailjsTemplateId: 'template_9if0w4d',
-  emailjsPublicKey: 'BGhxxqDqYr7jkpsRB',
-  turnstileSiteKey: ''
-};
-
-const resolveEnvValue = (value, fallback = '') => {
-  if (typeof value !== 'string') return fallback;
-  const trimmed = value.trim();
-  if (!trimmed || trimmed.startsWith('__')) return fallback;
-  return trimmed;
-};
-
+// Ces valeurs sont toutes publiques par nature (visibles côté client dans
+// n'importe quel cas : clé publique EmailJS, site key Turnstile, etc.).
+// Elles étaient auparavant injectées via des placeholders (__SERVICE_ID__...)
+// dans index.html, mais le workflow de déploiement ne les substituait jamais
+// (il fait un simple scp du dossier src/) : le site retombait donc toujours
+// sur ces valeurs par défaut. On les déclare directement ici pour éviter une
+// indirection qui ne servait à rien.
 const normalizeWebsiteUrl = (value) => {
   if (!value) return '';
   return /^https?:\/\//i.test(value) ? value : `https://${value}`;
 };
 
-const env = window.MMM_ENV || {};
-
 export const config = {
-  projectName: resolveEnvValue(env.projectName, defaults.projectName),
-  contactEmail: resolveEnvValue(env.contactEmail, defaults.contactEmail),
-  newsletterFrequency: resolveEnvValue(env.newsletterFrequency, defaults.newsletterFrequency),
-  websiteUrl: normalizeWebsiteUrl(resolveEnvValue(env.websiteUrl, defaults.websiteUrl)),
+  projectName: 'MyMemoMaster',
+  contactEmail: 'support@my-memo-master.com',
+  newsletterFrequency: 'rapport trimestriel',
+  websiteUrl: normalizeWebsiteUrl('my-memo-master.com'),
   emailjs: {
-    serviceId: resolveEnvValue(env.emailjsServiceId, defaults.emailjsServiceId),
-    templateId: resolveEnvValue(env.emailjsTemplateId, defaults.emailjsTemplateId),
-    publicKey: resolveEnvValue(env.emailjsPublicKey, defaults.emailjsPublicKey)
+    serviceId: 'service_wfecz27',
+    templateId: 'template_9if0w4d',
+    publicKey: 'BGhxxqDqYr7jkpsRB'
   },
-  turnstileSiteKey: resolveEnvValue(env.turnstileSiteKey, defaults.turnstileSiteKey)
+  turnstileSiteKey: '0x4AAAAAAC2JVuF9MNWoCGha'
 };
