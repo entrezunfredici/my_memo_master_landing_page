@@ -3,10 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MyMemoMaster : une plateforme éducative en bêta pour réviser activement, s'organiser et suivre sa progression." />
+  <meta name="description" content="MyMemoMaster est une plateforme web (my-memo-master.com) qui aide les étudiants à réviser avec des cartes mentales, des flashcards (système de Leitner) et des exercices. Projet open source en bêta." />
+  <link rel="canonical" href="https://my-memo-master.com/" />
   <link rel="icon" type="image/svg+xml" href="./images/logo-full.svg" />
   <title>MyMemoMaster — Réviser, s'organiser, progresser</title>
+
+  <!-- Open Graph / réseaux sociaux -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MyMemoMaster" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:url" content="https://my-memo-master.com/" />
+  <meta property="og:title" content="MyMemoMaster — Réviser, s'organiser, progresser" />
+  <meta property="og:description" content="Plateforme web pour étudiants : cartes mentales, flashcards (Leitner), exercices, planning et suivi de progression. En bêta, code open source." />
+  <meta property="og:image" content="https://my-memo-master.com/assets/revision-alternante.webp" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MyMemoMaster — Réviser, s'organiser, progresser" />
+  <meta name="twitter:description" content="Plateforme web pour étudiants : cartes mentales, flashcards (Leitner), exercices, planning et suivi de progression. En bêta, code open source." />
+  <meta name="twitter:image" content="https://my-memo-master.com/assets/revision-alternante.webp" />
+
   <link rel="stylesheet" href="css/main.css" />
+
+  <!-- Données structurées : identité de l'entité, pour désambiguïser MyMemoMaster -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MyMemoMaster",
+    "url": "https://my-memo-master.com/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web",
+    "description": "MyMemoMaster est une plateforme web française qui aide les étudiants du post-bac à réviser activement : cartes mentales, flashcards avec système de Leitner, exercices, planning et suivi de progression. Projet open source, actuellement en bêta.",
+    "applicationSubCategory": "Révision et méthode de travail pour étudiants",
+    "isAccessibleForFree": true,
+    "sameAs": [
+      "https://github.com/entrezunfredici/MyMemoMaster"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "MyMemoMaster est-il déjà disponible ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le projet est actuellement en phase de bêta test. Cela signifie que la plateforme est en cours d'évolution et qu'elle n'est pas encore présentée comme une version finalisée."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que veut dire bêta test ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La bêta permet de tester, d'ajuster et d'améliorer le produit à partir d'usages concrets. Certaines fonctionnalités peuvent encore évoluer, être affinées ou être réorganisées."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment accéder à l'application ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'application est en ligne à l'adresse app.my-memo-master.com. Utilisez le bouton « Accéder à l'application » sur la page d'accueil pour vous connecter ou créer un compte."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qui peut utiliser MyMemoMaster ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le projet vise principalement les étudiants post-bac, mais il peut aussi intéresser des enseignants et, à terme, des établissements qui cherchent des outils pédagogiques mieux structurés."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Les retours utilisateurs sont-ils lus ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, l'objectif de cette phase est justement de recueillir des retours utiles pour améliorer le produit et mieux prioriser la roadmap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce gratuit pendant la bêta ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La page présente avant tout un projet en cours de construction. Les modalités exactes d'accès et d'ouverture sont amenées à être précisées au fil de la progression de la bêta."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Header / navigation -->
