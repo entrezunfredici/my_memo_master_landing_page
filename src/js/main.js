@@ -1,6 +1,7 @@
 import { config } from './config.js';
 import { initNav } from './nav.js';
 import { initForms } from './forms.js';
+import { initDemoVideo } from './demo.js';
 
 document.documentElement.style.setProperty('--project-name', `"${config.projectName}"`);
 document.documentElement.style.setProperty('--contact-email', `"${config.contactEmail}"`);
@@ -30,3 +31,5 @@ if (appAccessLink && config.appUrl) {
 initNav();
 
 initForms();
+
+initDemoVideo();
