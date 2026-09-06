@@ -1,13 +1,4 @@
 
 ## Mise en ligne
 
-```sh
-mkdir my_memo_master_landing_page_prod
-chmod -R 775 my_memo_master_landing_page_prod
-chown -R mymemomaster_prod:www-data my_memo_master_landing_page_prod
-```
-
-- `SERVER_IP`
-- `SERVER_USER`
-- `SERVER_PRIVATE_KEY`
-- `APACHE_FOLDER`: `my_memo_master_landing_page_prod`
+Le site est déployé sur Cloudflare Pages, connecté à ce dépôt GitHub. Chaque push sur `main` déclenche automatiquement un nouveau build et déploiement — aucune action manuelle requise.
