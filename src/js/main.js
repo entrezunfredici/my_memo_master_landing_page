@@ -4,7 +4,6 @@ import { initForms } from './forms.js';
 
 document.documentElement.style.setProperty('--project-name', `"${config.projectName}"`);
 document.documentElement.style.setProperty('--contact-email', `"${config.contactEmail}"`);
-document.documentElement.style.setProperty('--newsletter-frequency', `"${config.newsletterFrequency}"`);
 
 document.getElementById('brandName').textContent = config.projectName;
 document.getElementById('footerBrandName').textContent = config.projectName;
@@ -23,17 +22,11 @@ const contactHref = `mailto:${config.contactEmail}`;
   node.href = config.websiteUrl;
 });
 
-const emailjsReady = Boolean(
-  window.emailjs &&
-  config.emailjs.serviceId &&
-  config.emailjs.templateId &&
-  config.emailjs.publicKey
-);
-
-if (emailjsReady) {
-  window.emailjs.init({ publicKey: config.emailjs.publicKey });
+const appAccessLink = document.getElementById('appAccessLink');
+if (appAccessLink && config.appUrl) {
+  appAccessLink.href = config.appUrl;
 }
 
 initNav();
 
-initForms(emailjsReady);
+initForms();
