@@ -153,13 +153,17 @@ button { cursor: pointer; }
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.3rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.9rem 1.3rem;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem 1.1rem;
   color: var(--color-muted);
   font-weight: 500;
 }
@@ -445,6 +449,16 @@ button { cursor: pointer; }
 
 .compare-honesty p + p {
   margin-top: 0.9rem;
+}
+
+.method-note {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 1rem 1.1rem;
+  background: var(--color-surface-alt);
+  border-radius: 16px;
+  color: var(--color-muted);
+  text-align: center;
 }
 
 /* Sources scientifiques : chiffres clés */
