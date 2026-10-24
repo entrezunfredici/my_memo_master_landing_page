@@ -307,6 +307,10 @@ button { cursor: pointer; }
   padding: 0.6rem;
 }
 
+.demo-subheading {
+  margin-top: 3.5rem;
+}
+
 .video-frame video {
   display: block;
   width: 100%;
