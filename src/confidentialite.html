@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Politique de confidentialité de MyMemoMaster : quelles données sont collectées, pourquoi, avec qui elles sont partagées, combien de temps elles sont conservées et comment exercer vos droits RGPD." />
+  <link rel="canonical" href="https://my-memo-master.com/confidentialite.html" />
+  <link rel="icon" type="image/svg+xml" href="./images/logo-full.svg" />
+  <title>Confidentialité et données personnelles — MyMemoMaster</title>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MyMemoMaster" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:url" content="https://my-memo-master.com/confidentialite.html" />
+  <meta property="og:title" content="Confidentialité et données personnelles — MyMemoMaster" />
+  <meta property="og:description" content="Ce que MyMemoMaster collecte, pourquoi, avec qui c'est partagé, combien de temps c'est conservé, et vos droits RGPD." />
+  <meta property="og:image" content="https://my-memo-master.com/assets/revision-alternante.webp" />
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/legal.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="./" aria-label="Retour à l'accueil MyMemoMaster">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="./images/logo-full.svg" alt="" />
+        </span>
+        <span id="brandName">MyMemoMaster</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Ouvrir le menu">
+        <span></span>
+      </button>
+
+      <nav id="navMenu" class="nav-menu" aria-label="Navigation principale">
+        <div class="nav-links">
+          <a href="./">Accueil</a>
+          <a href="#resume">En bref</a>
+          <a href="#donnees">Données</a>
+          <a href="#partage">Partage</a>
+          <a href="#droits">Vos droits</a>
+        </div>
+        <a class="btn btn-primary" href="https://app.my-memo-master.com" target="_blank" rel="noopener">Accéder à l'application</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section legal-hero">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Confidentialité</span>
+          <h1>Vos données, expliquées simplement.</h1>
+          <p>MyMemoMaster est un projet open source en bêta : son code est public, et cette page décrit ce qu’il fait réellement de vos données. Elle est rédigée à partir du fonctionnement actuel de l’application, y compris ses limites.</p>
+          <p class="legal-updated">Dernière mise à jour : <time datetime="2026-10-28">28 octobre 2026</time></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- En bref -->
+    <section class="section section-alt" id="resume">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">En bref</span>
+          <h2>Les points essentiels.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Aucune publicité, aucun suivi</h3>
+            <p>L’application n’intègre ni outil de mesure d’audience, ni publicité, ni traceur tiers. Elle n’utilise pas de cookies : seul le stockage local de votre navigateur sert à vous garder connecté.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Vos données ne sont pas vendues</h3>
+            <p>Elles servent uniquement à faire fonctionner le service de révision. Aucune revente, aucun profilage commercial.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Vous décidez de ce qu’un enseignant voit</h3>
+            <p>Vos statistiques de révision ne sont visibles d’un enseignant que si vous le décidez, enseignant par enseignant et groupe par groupe, et vous pouvez retirer cet accord à tout moment.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>IA : un fournisseur européen</h3>
+            <p>Les fonctions d’IA passent par Mistral AI, société française, choisie en priorité pour des raisons de conformité RGPD.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Suppression de compte en libre-service</h3>
+            <p>Vous pouvez supprimer votre compte vous-même depuis l’application. Les détails (et une exception à connaître) sont décrits plus bas.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Code vérifiable</h3>
+            <p>Le fonctionnement décrit ici peut être vérifié dans le <a class="legal-link" href="https://github.com/entrezunfredici/MyMemoMaster" target="_blank" rel="noopener">dépôt GitHub</a> du projet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsable -->
+    <section class="section" id="responsable">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Responsable du traitement</span>
+          <h2>Qui est responsable de vos données ?</h2>
+        </div>
+        <p>Le projet MyMemoMaster, développé et exploité par son auteur (voir le <a class="legal-link" href="https://github.com/entrezunfredici/MyMemoMaster" target="_blank" rel="noopener">dépôt du projet</a>), est responsable du traitement des données collectées par l’application <strong>app.my-memo-master.com</strong> et par le site <strong>my-memo-master.com</strong>.</p>
+        <p>Pour toute question relative à vos données, une seule adresse : <a class="legal-link legal-contact" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>.</p>
+        <p>Lorsque votre établissement crée des groupes classe sur MyMemoMaster, il agit pour ses propres besoins pédagogiques ; nous restons responsables du fonctionnement technique de la plateforme.</p>
+      </div>
+    </section>
+
+    <!-- Données collectées -->
+    <section class="section section-alt" id="donnees">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Données collectées</span>
+          <h2>Quelles données, pour quoi faire ?</h2>
+          <p>Nous ne collectons que ce dont l’application a besoin pour fonctionner. Le fondement juridique est l’exécution du service que vous avez demandé (création de compte et utilisation de la plateforme), complété par votre consentement pour le partage de vos statistiques avec un enseignant, et par notre intérêt légitime pour la sécurité du service.</p>
+        </div>
+
+        <div class="table-scroll">
+          <table class="compare-table legal-table">
+            <thead>
+              <tr>
+                <th>Catégorie</th>
+                <th>Détail</th>
+                <th>Finalité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Compte</td>
+                <td>Nom, adresse e-mail, mot de passe, rôle (étudiant, enseignant, administrateur d’établissement…), date de dernière connexion, codes temporaires de vérification d’e-mail, de réinitialisation du mot de passe et de double authentification (si activée).</td>
+                <td>Créer et sécuriser votre compte, vous identifier.</td>
+              </tr>
+              <tr>
+                <td>Contenus que vous créez</td>
+                <td>Cartes mentales, flashcards, exercices, réponses, images et fichiers PDF importés.</td>
+                <td>Fournir le service de révision.</td>
+              </tr>
+              <tr>
+                <td>Activité d’apprentissage</td>
+                <td>Séances de révision, résultats aux exercices, boîtes du système de Leitner, indicateurs de progression, temps de consultation d’une carte mentale, état du parcours de découverte.</td>
+                <td>Calculer votre progression, planifier vos révisions, afficher vos statistiques.</td>
+              </tr>
+              <tr>
+                <td>Planning</td>
+                <td>Événements de calendrier, échéances, rappels.</td>
+                <td>Vous aider à organiser vos révisions.</td>
+              </tr>
+              <tr>
+                <td>Classes</td>
+                <td>Appartenance à un groupe, invitations, ressources partagées, rendus de devoirs.</td>
+                <td>Fonctions de groupe classe.</td>
+              </tr>
+              <tr>
+                <td>Administration et sécurité</td>
+                <td>Journal d’audit des actions d’administration (changement de rôle, activation de compte, gestion de groupes…), journaux techniques des requêtes (dont l’adresse IP), compteurs d’utilisation de l’IA (nombre de jetons et de pages traités, sans le contenu).</td>
+                <td>Sécuriser le service, détecter les abus, limiter les coûts d’IA, diagnostiquer les pannes.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="legal-note">L’application ne demande aucune donnée sensible : ni date de naissance, ni adresse postale, ni numéro de téléphone, ni localisation.</p>
+      </div>
+    </section>
+
+    <!-- Partage -->
+    <section class="section" id="partage">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Partage et sous-traitants</span>
+          <h2>Avec qui vos données sont-elles partagées ?</h2>
+        </div>
+
+        <div class="audience-grid">
+          <article class="card">
+            <h3>Mistral AI (intelligence artificielle)</h3>
+            <p>Quand vous utilisez une fonction d’IA, le texte nécessaire est envoyé à Mistral AI :</p>
+            <ul class="list">
+              <li><span class="bullet">•</span><span>le <strong>contenu de vos cours</strong> (texte, ou PDF analysé par reconnaissance de caractères s’il s’agit d’un scan) pour générer des cartes ou des exercices ;</span></li>
+              <li><span class="bullet">•</span><span><strong>votre réponse et les réponses attendues</strong> pour corriger une réponse rédigée librement.</span></li>
+            </ul>
+            <p>Rien n’est envoyé à Mistral AI sans que vous ayez lancé une de ces fonctions. Des plafonds quotidiens et mensuels limitent l’usage ; au-delà, la correction bascule sur un modèle qui tourne sur nos propres serveurs, sans appel externe.</p>
+            <p class="legal-note">D’après la documentation publique de Mistral AI consultée par le projet : société française, données traitées dans l’Union européenne par défaut, conservation limitée à 30 jours à des fins de lutte contre les abus, pas d’entraînement des modèles sur vos données sans accord explicite, accord de traitement RGPD disponible. Ces conditions relèvent de Mistral AI et peuvent évoluer.</p>
+          </article>
+
+          <article class="card">
+            <h3>Les autres prestataires techniques</h3>
+            <ul class="list">
+              <li><span class="bullet">•</span><span><strong>Envoi d’e-mails</strong> (Hostinger) : e-mails de vérification d’adresse, de réinitialisation de mot de passe et de double authentification.</span></li>
+              <li><span class="bullet">•</span><span><strong>Hébergement et stockage de fichiers</strong> (Infomaniak, Suisse) : l’API, la base de données (Kubernetes) et les fichiers importés (stockage d’objets compatible S3) sont hébergés chez Infomaniak, dans ses centres de données suisses. La Suisse bénéficie d’une décision d’adéquation de la Commission européenne : le niveau de protection des données y est reconnu comme équivalent à celui de l’UE.</span></li>
+              <li><span class="bullet">•</span><span><strong>Cloudflare</strong> : héberge ce site vitrine et fournit le contrôle anti-robot (Turnstile) du formulaire de contact.</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Votre établissement et vos enseignants</h3>
+            <ul class="list">
+              <li><span class="bullet">•</span><span>Les membres d’un <strong>groupe classe</strong> voient les contenus que vous y partagez et les rendus que vous y déposez.</span></li>
+              <li><span class="bullet">•</span><span>Un enseignant ne voit <strong>vos statistiques de révision</strong> que si vous lui en avez donné l’accès, pour ce groupe, sur toutes vos matières ou sur une matière précise. Le retrait de l’accord est immédiat. Même un administrateur ne contourne pas cette règle.</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Ce que nous ne faisons pas</h3>
+            <ul class="list">
+              <li><span class="bullet">✕</span><span>Nous ne vendons ni ne louons vos données.</span></li>
+              <li><span class="bullet">✕</span><span>Nous n’affichons aucune publicité.</span></li>
+              <li><span class="bullet">✕</span><span>Nous n’utilisons aucun outil de mesure d’audience ni de traceur tiers.</span></li>
+              <li><span class="bullet">✕</span><span>Les polices de l’application sont hébergées chez nous : aucun appel à un service de polices externe.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cookies et stockage -->
+    <section class="section section-alt" id="cookies">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Cookies et stockage local</span>
+          <h2>Pas de cookies, mais du stockage local.</h2>
+        </div>
+        <p>L’application ne dépose <strong>aucun cookie</strong>. Elle utilise le stockage local de votre navigateur pour trois usages strictement nécessaires ou de confort, qui ne sont jamais transmis à des tiers :</p>
+        <ul class="legal-list">
+          <li><strong>Votre session</strong> (jeton de connexion et jeton de renouvellement, d’une durée de 7 jours par défaut) pour vous éviter de vous reconnecter à chaque page. Ils sont effacés à la déconnexion.</li>
+          <li><strong>Votre préférence de thème</strong> (mode sombre).</li>
+          <li><strong>L’avancement du parcours guidé</strong>, conservé uniquement le temps de la session du navigateur.</li>
+        </ul>
+        <p>Ces éléments sont nécessaires au fonctionnement du service ou relèvent d’un choix que vous faites vous-même : ils ne requièrent pas de bandeau de consentement. Ce site vitrine, lui, ne dépose rien de tel.</p>
+      </div>
+    </section>
+
+    <!-- Conservation -->
+    <section class="section" id="conservation">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Durées de conservation</span>
+          <h2>Combien de temps vos données sont-elles gardées ?</h2>
+        </div>
+        <p>Vos données sont conservées <strong>tant que votre compte existe</strong>. Après suppression du compte :</p>
+        <ul class="legal-list">
+          <li>vos informations de compte, vos séances de révision, vos rappels, vos événements, vos accords de partage de statistiques, vos appartenances à des groupes, vos rendus de devoirs et vos brouillons de génération par IA sont <strong>effacés</strong> ;</li>
+          <li>les <strong>sauvegardes</strong> de la base de données (une par jour, 14 conservées par défaut) continuent de contenir vos données jusqu’à leur renouvellement, soit environ deux semaines ; elles ne sont pas restaurées pour remettre un compte supprimé en service ;</li>
+          <li>le <strong>journal d’audit</strong> des actions d’administration est conservé de façon détachée de votre identité (l’identifiant de l’auteur de l’action est supprimé).</li>
+        </ul>
+
+        <div class="legal-callout">
+          <h3>Une exception à connaître</h3>
+          <p>Les <strong>systèmes de flashcards (Leitner) et les cartes mentales</strong> que vous avez créés ne sont pas détruits avec votre compte : ils sont <strong>détachés de votre identité</strong> mais conservés dans la base, afin de ne pas faire disparaître des contenus que d’autres utilisateurs ont pu utiliser. Si ces contenus contiennent des informations personnelles ou si vous souhaitez leur effacement complet, écrivez à <a class="legal-link" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a> : nous les supprimons.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sécurité -->
+    <section class="section section-alt" id="securite">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Sécurité</span>
+          <h2>Comment vos données sont protégées.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">1</div>
+            <h3>Mots de passe hachés</h3>
+            <p>Votre mot de passe n’est jamais stocké en clair : seule une empreinte irréversible (bcrypt) est conservée. Le code temporaire de réinitialisation est lui aussi stocké sous forme hachée.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">2</div>
+            <h3>Connexion sécurisée</h3>
+            <p>Les échanges sont chiffrés (HTTPS). Les jetons de connexion sont de courte durée et renouvelables, et une double authentification par e-mail est disponible.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">3</div>
+            <h3>Protection contre les abus</h3>
+            <p>Limitation du nombre de tentatives de connexion et d’inscription, en-têtes de sécurité renforcés, contrôle strict des droits d’accès selon le rôle.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">4</div>
+            <h3>Sauvegardes et audits</h3>
+            <p>Sauvegardes quotidiennes de la base, audit de sécurité appliqué au code (référentiel OWASP) et audit d’accessibilité. Le code étant ouvert, il peut être examiné par chacun.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Droits -->
+    <section class="section" id="droits">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Vos droits</span>
+          <h2>Exercer vos droits RGPD.</h2>
+          <p>Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants.</p>
+        </div>
+
+        <div class="table-scroll">
+          <table class="compare-table legal-table">
+            <thead>
+              <tr>
+                <th>Droit</th>
+                <th>Comment l’exercer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Accès et rectification</td>
+                <td>Vous consultez et modifiez votre nom et votre adresse e-mail dans votre profil, dans l’application.</td>
+              </tr>
+              <tr>
+                <td>Effacement</td>
+                <td>Dans l’application : <em>Profil → Zone dangereuse → Supprimer mon compte</em> (confirmation en tapant « SUPPRIMER »). La suppression est irréversible. Voir l’exception décrite dans « Durées de conservation ».</td>
+              </tr>
+              <tr>
+                <td>Retrait de l’accord de partage</td>
+                <td>À tout moment, dans l’application, enseignant par enseignant, groupe par groupe et matière par matière.</td>
+              </tr>
+              <tr>
+                <td>Portabilité, limitation, opposition</td>
+                <td>Écrivez-nous à <a class="legal-link" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>. L’application ne propose pas encore d’export automatique de vos données : nous vous les transmettons dans un format lisible sur demande.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Nous répondons dans un délai d’un mois maximum. Nous pouvons vous demander de confirmer votre identité depuis l’adresse e-mail de votre compte avant de traiter la demande.</p>
+        <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la <strong>CNIL</strong> : <a class="legal-link" href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">cnil.fr/fr/plaintes</a>.</p>
+      </div>
+    </section>
+
+    <!-- Mineurs + site -->
+    <section class="section section-alt" id="autres">
+      <div class="container legal-content">
+        <div class="audience-grid">
+          <article class="card">
+            <h3>Mineurs</h3>
+            <p>MyMemoMaster s’adresse en priorité aux étudiants post-bac. En France, un mineur de moins de 15 ans ne peut consentir seul au traitement de ses données : l’accord d’un parent ou représentant légal est alors nécessaire. Si vous pensez qu’un compte a été créé sans cet accord, écrivez-nous et nous le supprimerons.</p>
+          </article>
+          <article class="card">
+            <h3>Ce site vitrine</h3>
+            <p>Le site my-memo-master.com ne dépose aucun cookie et n’intègre aucun outil de mesure d’audience. Il est hébergé par Cloudflare, qui traite l’adresse IP des visiteurs pour délivrer les pages. Le formulaire de retour est protégé par Cloudflare Turnstile (anti-robot). Pour l’instant, il n’enregistre ni ne transmet le message saisi : pour nous écrire, utilisez l’adresse e-mail ci-dessus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Évolutions -->
+    <section class="section" id="evolutions">
+      <div class="container legal-content">
+        <div class="section-heading">
+          <span class="eyebrow">Évolutions</span>
+          <h2>Modifications de cette page.</h2>
+        </div>
+        <p>MyMemoMaster est en bêta et évolue. Cette page sera mise à jour en même temps que l’application, et la date de dernière mise à jour figure en haut. Toute modification importante sera signalée dans l’application ou par e-mail. Les versions successives de cette page sont consultables dans l’historique du dépôt GitHub.</p>
+        <p><a class="btn btn-secondary" href="./">Retour à l’accueil</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="./images/logo-full.svg" alt="" />
+          </span>
+          <span id="footerBrandName">MyMemoMaster</span>
+        </div>
+        <div class="footer-tags">
+          <span class="footer-tag">Projet en bêta</span>
+          <span class="footer-tag">Open source</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-links">
+          <a href="./">Accueil</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="https://github.com/entrezunfredici/MyMemoMaster" target="_blank" rel="noopener">GitHub</a>
+          <a id="footerContactLink" href="mailto:support@my-memo-master.com">Contact</a>
+        </div>
+        <p class="footer-meta">© <span id="currentYear"></span> <span id="footerProjectName">MyMemoMaster</span> — Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/legal.js"></script>
+</body>
+</html>
