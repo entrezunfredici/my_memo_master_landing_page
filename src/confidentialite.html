@@ -53,7 +53,7 @@
           <span class="eyebrow">Confidentialité</span>
           <h1>Vos données, expliquées simplement.</h1>
           <p>MyMemoMaster est un projet open source en bêta : son code est public, et cette page décrit ce qu’il fait réellement de vos données. Elle est rédigée à partir du fonctionnement actuel de l’application, y compris ses limites.</p>
-          <p class="legal-updated">Dernière mise à jour : <time datetime="2026-10-28">28 octobre 2026</time></p>
+          <p class="legal-updated">Dernière mise à jour : <time datetime="2026-10-30">30 octobre 2026</time></p>
         </div>
       </div>
     </section>
@@ -89,8 +89,8 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">✓</div>
-            <h3>Suppression de compte en libre-service</h3>
-            <p>Vous pouvez supprimer votre compte vous-même depuis l’application. Les détails (et une exception à connaître) sont décrits plus bas.</p>
+            <h3>Export et suppression en libre-service</h3>
+            <p>Depuis votre profil, vous exportez vos données en un fichier JSON, vous les réimportez, ou vous supprimez votre compte. Les détails (et une exception à connaître) sont décrits plus bas.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">✓</div>
@@ -135,7 +135,7 @@
             <tbody>
               <tr>
                 <td>Compte</td>
-                <td>Nom, adresse e-mail, mot de passe, rôle (étudiant, enseignant, administrateur d’établissement…), date de dernière connexion, codes temporaires de vérification d’e-mail, de réinitialisation du mot de passe et de double authentification (si activée).</td>
+                <td>Nom, adresse e-mail, mot de passe, rôle (étudiant, enseignant, administrateur d’établissement…), date de dernière connexion, codes temporaires de vérification d’e-mail, de réinitialisation du mot de passe et de double authentification, réglage d’activation de la double authentification.</td>
                 <td>Créer et sécuriser votre compte, vous identifier.</td>
               </tr>
               <tr>
@@ -270,12 +270,12 @@
           <div class="feature-card">
             <div class="feature-icon">1</div>
             <h3>Mots de passe hachés</h3>
-            <p>Votre mot de passe n’est jamais stocké en clair : seule une empreinte irréversible (bcrypt) est conservée. Le code temporaire de réinitialisation est lui aussi stocké sous forme hachée.</p>
+            <p>Votre mot de passe n’est jamais stocké en clair : seule une empreinte irréversible (bcrypt) est conservée. Les codes temporaires (réinitialisation, double authentification) sont eux aussi stockés sous forme hachée.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">2</div>
             <h3>Connexion sécurisée</h3>
-            <p>Les échanges sont chiffrés (HTTPS). Les jetons de connexion sont de courte durée et renouvelables, et une double authentification par e-mail est disponible.</p>
+            <p>Les échanges sont chiffrés (HTTPS). Les jetons de connexion sont de courte durée et renouvelables. Une <strong>double authentification par e-mail</strong> est activée par défaut sur tous les comptes (obligatoire pour les administrateurs) : le code reçu est haché, valable 10 minutes, à usage unique et limité à 5 essais. Vous pouvez la désactiver depuis votre profil (sauf rôle administrateur).</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">3</div>
@@ -314,6 +314,10 @@
                 <td>Vous consultez et modifiez votre nom et votre adresse e-mail dans votre profil, dans l’application.</td>
               </tr>
               <tr>
+                <td>Portabilité</td>
+                <td>Dans l’application : <em>Profil → Mes données → Exporter mes données</em>. Vous obtenez un fichier JSON contenant votre profil (sans mot de passe ni code ou jeton de sécurité), vos systèmes de flashcards, vos cartes mentales, vos exercices et résultats, vos séances de révision, vos rappels et vos groupes. Ce fichier peut être réimporté dans un compte MyMemoMaster (<em>Importer</em>) : l’import fusionne avec l’existant sans rien écraser. Limité à 5 exports ou imports par heure. Ne figurent pas encore dans l’export : ressources et rendus de classe, événements de calendrier, échéances et accords de partage de statistiques ; sur demande, nous vous les transmettons par e-mail.</td>
+              </tr>
+              <tr>
                 <td>Effacement</td>
                 <td>Dans l’application : <em>Profil → Zone dangereuse → Supprimer mon compte</em> (confirmation en tapant « SUPPRIMER »). La suppression est irréversible. Voir l’exception décrite dans « Durées de conservation ».</td>
               </tr>
@@ -322,8 +326,8 @@
                 <td>À tout moment, dans l’application, enseignant par enseignant, groupe par groupe et matière par matière.</td>
               </tr>
               <tr>
-                <td>Portabilité, limitation, opposition</td>
-                <td>Écrivez-nous à <a class="legal-link" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>. L’application ne propose pas encore d’export automatique de vos données : nous vous les transmettons dans un format lisible sur demande.</td>
+                <td>Limitation et opposition</td>
+                <td>Écrivez-nous à <a class="legal-link" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>.</td>
               </tr>
             </tbody>
           </table>
