@@ -1,0 +1,19 @@
+name = "mmm-feedback"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Même origine que le site : pas de CORS à gérer.
+routes = [
+  { pattern = "my-memo-master.com/api/feedback", zone_name = "my-memo-master.com" }
+]
+
+[vars]
+SMTP_HOST = "mail.infomaniak.com"
+SMTP_PORT = "465"
+MAIL_FROM = "noreply@my-memo-master.com"
+MAIL_TO = "support@my-memo-master.com"
+
+# Secrets (jamais dans le dépôt) :
+#   wrangler secret put SMTP_USER
+#   wrangler secret put SMTP_PASS
+#   wrangler secret put TURNSTILE_SECRET

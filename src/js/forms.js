@@ -19,15 +19,39 @@ export function initForms() {
   const feedbackForm = document.getElementById('feedbackForm');
   const feedbackMessageStatus = document.getElementById('feedbackMessageStatus');
 
-  feedbackForm.addEventListener('submit', (event) => {
+  const submitButton = feedbackForm.querySelector('button[type="submit"]');
+
+  feedbackForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!feedbackForm.reportValidity()) return;
-    if (config.turnstileSiteKey && !getTurnstileToken(feedbackForm)) {
+    const turnstileToken = getTurnstileToken(feedbackForm);
+    if (config.turnstileSiteKey && !turnstileToken) {
       setStatusMessage(feedbackMessageStatus, 'Veuillez compléter le CAPTCHA avant de continuer.', 'error');
       return;
     }
-    feedbackMessageStatus.classList.add('is-visible');
-    feedbackForm.reset();
-    resetTurnstile(feedbackForm);
+
+    submitButton.disabled = true;
+    try {
+      const response = await fetch(config.feedbackEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: feedbackForm.feedbackMessage.value,
+          turnstileToken
+        })
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      setStatusMessage(feedbackMessageStatus, 'Merci pour votre retour, il nous a bien été transmis.');
+      feedbackForm.reset();
+    } catch {
+      setStatusMessage(
+        feedbackMessageStatus,
+        `L’envoi a échoué. Vous pouvez nous écrire directement à ${config.contactEmail}.`,
+        'error'
+      );
+    } finally {
+      submitButton.disabled = false;
+      resetTurnstile(feedbackForm);
+    }
   });
 }

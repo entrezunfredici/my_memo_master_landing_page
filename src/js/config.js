@@ -15,5 +15,6 @@ export const config = {
   contactEmail: 'support@my-memo-master.com',
   websiteUrl: normalizeWebsiteUrl('my-memo-master.com'),
   appUrl: normalizeWebsiteUrl('app.my-memo-master.com'),
+  feedbackEndpoint: '/api/feedback',
   turnstileSiteKey: '0x4AAAAAAC2JVuF9MNWoCGha'
 };
