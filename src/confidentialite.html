@@ -53,7 +53,7 @@
           <span class="eyebrow">Confidentialité</span>
           <h1>Vos données, expliquées simplement.</h1>
           <p>MyMemoMaster est un projet open source en bêta : son code est public, et cette page décrit ce qu’il fait réellement de vos données. Elle est rédigée à partir du fonctionnement actuel de l’application, y compris ses limites.</p>
-          <p class="legal-updated">Dernière mise à jour : <time datetime="2026-10-30">30 octobre 2026</time></p>
+          <p class="legal-updated">Dernière mise à jour : <time datetime="2026-10-31">31 octobre 2026</time></p>
         </div>
       </div>
     </section>
@@ -194,9 +194,9 @@
           <article class="card">
             <h3>Les autres prestataires techniques</h3>
             <ul class="list">
-              <li><span class="bullet">•</span><span><strong>Envoi d’e-mails</strong> (Hostinger) : e-mails de vérification d’adresse, de réinitialisation de mot de passe et de double authentification.</span></li>
+              <li><span class="bullet">•</span><span><strong>Envoi d’e-mails</strong> (Infomaniak, Suisse) : e-mails de vérification d’adresse, de réinitialisation de mot de passe et de double authentification, ainsi que les messages reçus via le formulaire de retour du site. <strong>Mailjet</strong> (groupe Sinch) sert de prestataire de secours : si l’envoi par Infomaniak échoue, les e-mails de l’application transitent par Mailjet. D’après la documentation publique de Mailjet : accord de traitement RGPD intégré au contrat et, pour les transferts hors Union européenne, clauses contractuelles types de la Commission européenne. Ces conditions relèvent de Mailjet et peuvent évoluer.</span></li>
               <li><span class="bullet">•</span><span><strong>Hébergement et stockage de fichiers</strong> (Infomaniak, Suisse) : l’API, la base de données (Kubernetes) et les fichiers importés (stockage d’objets compatible S3) sont hébergés chez Infomaniak, dans ses centres de données suisses. La Suisse bénéficie d’une décision d’adéquation de la Commission européenne : le niveau de protection des données y est reconnu comme équivalent à celui de l’UE.</span></li>
-              <li><span class="bullet">•</span><span><strong>Cloudflare</strong> : héberge ce site vitrine et fournit le contrôle anti-robot (Turnstile) du formulaire de contact.</span></li>
+              <li><span class="bullet">•</span><span><strong>Cloudflare</strong> : héberge ce site vitrine, fournit le contrôle anti-robot (Turnstile) du formulaire de retour et exécute le petit programme (Worker) qui transmet ce formulaire par e-mail.</span></li>
             </ul>
           </article>
 
@@ -348,7 +348,7 @@
           </article>
           <article class="card">
             <h3>Ce site vitrine</h3>
-            <p>Le site my-memo-master.com ne dépose aucun cookie et n’intègre aucun outil de mesure d’audience. Il est hébergé par Cloudflare, qui traite l’adresse IP des visiteurs pour délivrer les pages. Le formulaire de retour est protégé par Cloudflare Turnstile (anti-robot). Pour l’instant, il n’enregistre ni ne transmet le message saisi : pour nous écrire, utilisez l’adresse e-mail ci-dessus.</p>
+            <p>Le site my-memo-master.com ne dépose aucun cookie et n’intègre aucun outil de mesure d’audience. Il est hébergé par Cloudflare, qui traite l’adresse IP des visiteurs pour délivrer les pages. Le formulaire de retour est protégé par Cloudflare Turnstile (anti-robot). Le message que vous saisissez est transmis par e-mail, via Infomaniak, à l’adresse de contact ci-dessus ; il n’est pas conservé ailleurs que dans cette boîte e-mail, et nous ne vous demandons ni nom ni adresse e-mail. N’y indiquez pas de données personnelles dont nous n’avons pas besoin : si vous souhaitez une réponse, écrivez-nous directement à l’adresse de contact.</p>
           </article>
         </div>
       </div>
