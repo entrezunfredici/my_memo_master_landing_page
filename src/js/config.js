@@ -16,5 +16,6 @@ export const config = {
   websiteUrl: normalizeWebsiteUrl('my-memo-master.com'),
   appUrl: normalizeWebsiteUrl('app.my-memo-master.com'),
   feedbackEndpoint: '/api/feedback',
+  androidWaitlistEndpoint: '/api/android-waitlist',
   turnstileSiteKey: '0x4AAAAAAC2JVuF9MNWoCGha'
 };

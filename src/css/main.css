@@ -723,6 +723,10 @@ button { cursor: pointer; }
 }
 
 /* Forms */
+.engage-card-wide {
+  grid-column: 1 / -1;
+}
+
 .engage-card {
   padding: 2rem;
   border-radius: 28px;

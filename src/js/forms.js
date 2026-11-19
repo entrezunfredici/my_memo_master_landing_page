@@ -15,43 +15,56 @@ const setStatusMessage = (node, message, tone = 'success') => {
   node.classList.toggle('is-error', tone === 'error');
 };
 
-export function initForms() {
-  const feedbackForm = document.getElementById('feedbackForm');
-  const feedbackMessageStatus = document.getElementById('feedbackMessageStatus');
+function bindForm({ form, status, endpoint, buildBody, successMessage }) {
+  if (!form) return;
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  const submitButton = feedbackForm.querySelector('button[type="submit"]');
-
-  feedbackForm.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!feedbackForm.reportValidity()) return;
-    const turnstileToken = getTurnstileToken(feedbackForm);
+    if (!form.reportValidity()) return;
+    const turnstileToken = getTurnstileToken(form);
     if (config.turnstileSiteKey && !turnstileToken) {
-      setStatusMessage(feedbackMessageStatus, 'Veuillez compléter le CAPTCHA avant de continuer.', 'error');
+      setStatusMessage(status, 'Veuillez compléter le CAPTCHA avant de continuer.', 'error');
       return;
     }
 
     submitButton.disabled = true;
     try {
-      const response = await fetch(config.feedbackEndpoint, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: feedbackForm.feedbackMessage.value,
-          turnstileToken
-        })
+        body: JSON.stringify({ ...buildBody(form), turnstileToken })
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      setStatusMessage(feedbackMessageStatus, 'Merci pour votre retour, il nous a bien été transmis.');
-      feedbackForm.reset();
+      setStatusMessage(status, successMessage);
+      form.reset();
     } catch {
       setStatusMessage(
-        feedbackMessageStatus,
+        status,
         `L’envoi a échoué. Vous pouvez nous écrire directement à ${config.contactEmail}.`,
         'error'
       );
     } finally {
       submitButton.disabled = false;
-      resetTurnstile(feedbackForm);
+      resetTurnstile(form);
     }
+  });
+}
+
+export function initForms() {
+  bindForm({
+    form: document.getElementById('feedbackForm'),
+    status: document.getElementById('feedbackMessageStatus'),
+    endpoint: config.feedbackEndpoint,
+    buildBody: (form) => ({ message: form.feedbackMessage.value }),
+    successMessage: 'Merci pour votre retour, il nous a bien été transmis.'
+  });
+
+  bindForm({
+    form: document.getElementById('androidForm'),
+    status: document.getElementById('androidStatus'),
+    endpoint: config.androidWaitlistEndpoint,
+    buildBody: (form) => ({ email: form.androidEmail.value.trim() }),
+    successMessage: 'Merci ! Votre adresse a bien été ajoutée à la liste Android.'
   });
 }

@@ -362,7 +362,22 @@
               <button class="btn btn-secondary" type="submit">Envoyer un retour</button>
             </form>
             <p class="fine-print">Vous pouvez aussi écrire directement à <a id="contactEmailLink" href="mailto:support@my-memo-master.com">support@my-memo-master.com</a>.</p>
-            <div class="status-message" id="feedbackMessageStatus" role="status" aria-live="polite"</div>
+            <div class="status-message" id="feedbackMessageStatus" role="status" aria-live="polite"></div>
+          </article>
+
+          <article class="engage-card engage-card-wide" id="android">
+            <h3>Tester l’application sur Android</h3>
+            <p>Une application Android est en préparation. Laissez votre adresse e-mail pour rejoindre la liste de diffusion des testeurs : nous vous préviendrons quand l’essai sera ouvert.</p>
+
+            <form id="androidForm">
+              <label for="androidEmail">Votre adresse e-mail
+                <input type="email" id="androidEmail" name="androidEmail" placeholder="prenom.nom@exemple.fr" autocomplete="email" maxlength="254" required />
+              </label>
+              <div class="cf-turnstile" id="androidTurnstile" data-sitekey="0x4AAAAAAC2JVuF9MNWoCGha"></div>
+              <button class="btn btn-primary" type="submit">Rejoindre la liste Android</button>
+            </form>
+            <p class="fine-print">Votre adresse n’est utilisée que pour vous informer de l’ouverture de l’essai Android. Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+            <div class="status-message" id="androidStatus" role="status" aria-live="polite"></div>
           </article>
         </div>
       </div>

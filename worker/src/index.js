@@ -1,6 +1,7 @@
 import { connect } from 'cloudflare:sockets';
 
 const MAX_MESSAGE_LENGTH = 5000;
+const EMAIL_RE = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const ALLOWED_ORIGINS = ['https://my-memo-master.com', 'https://www.my-memo-master.com'];
 
 const json = (body, status = 200) =>
@@ -112,9 +113,23 @@ export default {
       return json({ error: 'invalid_json' }, 400);
     }
 
-    const message = String(payload.message ?? '').trim();
+    const isAndroid = new URL(request.url).pathname === '/api/android-waitlist';
     const token = String(payload.turnstileToken ?? '');
-    if (!message || message.length > MAX_MESSAGE_LENGTH) return json({ error: 'invalid_message' }, 400);
+
+    let mail;
+    if (isAndroid) {
+      const email = String(payload.email ?? '').trim();
+      // Pas de retour à la ligne possible : l'adresse est insérée dans un corps de mail.
+      if (!EMAIL_RE.test(email) || email.length > 254) return json({ error: 'invalid_email' }, 400);
+      mail = {
+        subject: 'Inscription liste Android MyMemoMaster',
+        text: `Nouvelle inscription à la liste de diffusion Android :\n${email}`
+      };
+    } else {
+      const message = String(payload.message ?? '').trim();
+      if (!message || message.length > MAX_MESSAGE_LENGTH) return json({ error: 'invalid_message' }, 400);
+      mail = { subject: 'Nouveau retour depuis le site MyMemoMaster', text: message };
+    }
     if (!token) return json({ error: 'captcha_required' }, 400);
 
     const ip = request.headers.get('CF-Connecting-IP');
@@ -123,10 +138,7 @@ export default {
     }
 
     try {
-      await sendMail(env, {
-        subject: 'Nouveau retour depuis le site MyMemoMaster',
-        text: message
-      });
+      await sendMail(env, mail);
     } catch (error) {
       console.error(error.message);
       return json({ error: 'send_failed' }, 502);
